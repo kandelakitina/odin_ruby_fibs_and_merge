@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'pry_byebug'
+require 'pry-byebug'
 
 # Adding fibonacci method to arrays
 class Array
@@ -37,5 +37,7 @@ end
 
 binding.pry
 
-p [6, 3, 9, 11, 4, 55]
-p [6, 3, 9, 11, 4, 55].split_array
+array = [6, 3, 9, 11, 4, 55]
+array.split_array
+
+binding.pry

@@ -9,3 +9,5 @@ gem 'rubocop', '~> 1.77'
 gem 'solargraph', '~> 0.56.0'
 
 gem "pry", "~> 0.15.2"
+
+gem "pry-byebug", "~> 3.11"
