@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # require 'rspec'
-require_relative '../lib/fibs'
+require_relative '../lib/array'
 
 RSpec.describe Array do
   describe '.fibs' do
