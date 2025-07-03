@@ -4,6 +4,7 @@ require 'pry-byebug'
 
 # Adding fibonacci method to arrays
 class Array
+  # Returns the nth Fibonacci number.
   def self.fibonacci(num)
     raise ArgumentError, 'num must be a positive integer' unless num.is_a?(Integer) && num.positive?
 
@@ -13,31 +14,30 @@ class Array
     fibonacci(num - 1) + fibonacci(num - 2)
   end
 
+  # Returns an array of Fibonacci numbers up to the given number
   def self.fibs(num)
     (1..num).map { |index| fibonacci(index) }
   end
 
+  # Merge sort array
   def merge_sort(arr = self)
     return arr if arr.length <= 1
 
-    left, right = split_array(arr)
-    merge_sort(left)
-    merge_sort(right)
+    mid = (arr.length / 2.0).ceil
+    left = arr[0...mid]
+    right = arr[mid..]
+
+    merge(merge_sort(left), merge_sort(right))
   end
 
-  # private
+  private
 
-  def split_array(arr = self)
-    return [arr, []] if arr.length <= 1
-
-    mid = (arr.length / 2.0).ceil
-    [arr[0...mid], arr[mid..]]
+  # Merge for sorting
+  def merge(left, right)
+    result = []
+    result << (left.first <= right.first ? left.shift : right.shift) until left.empty? || right.empty?
+    result + left + right
   end
 end
 
-binding.pry
-
-array = [6, 3, 9, 11, 4, 55]
-array.split_array
-
-binding.pry
+p [6, 3, 9, 11, 4, 55].merge_sort
